@@ -75,7 +75,7 @@ EOF
 		su - "$_REMOTE_USER" <<EOF
 
 			if asdf list "$PLUGIN" >/dev/null 2>&1; then
-				echo "$PLUGIN  already exists - skipping adding it"
+				echo "$PLUGIN already exists - skipping adding it"
 			else
 				asdf plugin add "$PLUGIN" "$REPO"
 			fi
@@ -105,7 +105,7 @@ EOF
 
 			. $_REMOTE_USER_HOME/.asdf/asdf.sh
 			if asdf list "$PLUGIN" >/dev/null 2>&1; then
-				echo "$PLUGIN  already exists - skipping adding it"
+				echo "$PLUGIN already exists - skipping adding it"
 			else
 				asdf plugin add "$PLUGIN" "$REPO"
 			fi
