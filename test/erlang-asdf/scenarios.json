@@ -2,7 +2,7 @@
     "test": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
-            "apt-get-packages": {
+            "ghcr.io/devcontainers-extra/features/apt-get-packages:1": {
                 "packages": "curl,git,build-essential,autoconf,m4,libwxgtk3.2-dev,libwxgtk-webview3.2-dev,libgl1-mesa-dev,libglu1-mesa-dev,libpng-dev,libssh-dev,unixodbc-dev,xsltproc,fop,libxml2-utils,libncurses-dev"
             },
             "erlang-asdf": {
