@@ -1,0 +1,13 @@
+{
+    "test": {
+        "image": "mcr.microsoft.com/devcontainers/base:debian",
+        "features": {
+            "apt-get-packages": {
+                "packages": "unzip"
+            },
+            "elixir-asdf": {
+                "version": "v1.19.4-otp-28"
+            }
+        }
+    }
+}
