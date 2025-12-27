@@ -16,7 +16,6 @@
     },
     "installsAfter": [
         "ghcr.io/devcontainers-extra/features/apt-get-packages",
-        "./erlang-asdf"
-        // "ghcr.io/devcontainers-extra/features/erlang-asdf"
+        "ghcr.io/rabdulwahhab/devcontainer-features/erlang-asdf"
     ]
 }

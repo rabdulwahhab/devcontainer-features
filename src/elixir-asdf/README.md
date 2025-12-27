@@ -11,7 +11,7 @@ _Note: Ensure that `unzip` is installed beforehand as it is a required dependenc
 
 ```json
 "features": {
-    "ghcr.io/devcontainers-extra/features/elixir-asdf:1": {
+    "ghcr.io/rabdulwahhab/devcontainer-features/elixir-asdf:1": {
         "version": "v1.19.4-otp-28"
     }
 }
