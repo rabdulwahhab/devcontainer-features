@@ -2,7 +2,7 @@
     "test": {
         "image": "mcr.microsoft.com/devcontainers/base:debian",
         "features": {
-            "apt-get-packages": {
+            "ghcr.io/devcontainers-extra/features/apt-get-packages:1": {
                 "packages": "unzip"
             },
             "elixir-asdf": {

@@ -1,9 +1,9 @@
 {
+    "name": "Elixir (via asdf)",
     "id": "elixir-asdf",
     "version": "1.0.0",
-    "name": "Elixir (via asdf)",
-    "documentationURL": "http://github.com/rabdulwahhab/devcontainer-features/tree/main/src/elixir-asdf",
     "description": "Elixir is a dynamic, functional language for building scalable and maintainable applications.",
+    "documentationURL": "http://github.com/rabdulwahhab/devcontainer-features/tree/main/src/elixir-asdf",
     "options": {
         "version": {
             "default": "latest",
@@ -16,7 +16,6 @@
     },
     "installsAfter": [
         "ghcr.io/devcontainers-extra/features/apt-get-packages",
-        "ghcr.io/devcontainers-extra/features/asdf-package",
         "ghcr.io/devcontainers-extra/features/erlang-asdf"
     ]
 }
