@@ -9,7 +9,7 @@ _Note: This feature does not install the build tools or dependencies needed for 
 
 ```json
 "features": {
-    "ghcr.io/devcontainers-extra/features/erlang-asdf:1": {
+    "ghcr.io/rabdulwahhab/devcontainer-features/erlang-asdf:1": {
         "version": "28.1",
         "kerlConfigureOptions": "--disable-debug --without-javac"
     }

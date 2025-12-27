@@ -34,6 +34,7 @@ jobs:
       matrix:
         features:
           - erlang-asdf
+          - elixir-asdf
     steps:
       - uses: actions/checkout@v4
 
