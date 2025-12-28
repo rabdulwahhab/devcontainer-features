@@ -3,17 +3,11 @@
 
 Elixir is a dynamic, functional language for building scalable and maintainable applications.
 
-_Note: Erlang must be installed first and the OTP versions must match. You may do so using [erlang-asdf](../erlang-asdf/)._
-
-_Note: Ensure that `unzip` is installed beforehand as it is a required dependency as outlined in the [asdf-elixir plugin docs](https://github.com/asdf-vm/asdf-elixir#install)._
-
 ## Example Usage
 
 ```json
 "features": {
-    "ghcr.io/rabdulwahhab/devcontainer-features/elixir-asdf:1": {
-        "version": "v1.19.4-otp-28"
-    }
+    "ghcr.io/rabdulwahhab/devcontainer-features/elixir-asdf:1": {}
 }
 ```
 
@@ -23,3 +17,8 @@ _Note: Ensure that `unzip` is installed beforehand as it is a required dependenc
 |-----|-----|-----|-----|
 | version | Select the version to install. | string | latest |
 
+
+
+---
+
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/rabdulwahhab/devcontainer-features/blob/main/src/elixir-asdf/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
