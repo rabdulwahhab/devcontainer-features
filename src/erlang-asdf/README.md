@@ -3,16 +3,11 @@
 
 Erlang is a programming language used to build massively scalable soft real-time systems with requirements on high availability. Some of its uses are in telecoms, banking, e-commerce, computer telephony and instant messaging. Erlang's runtime system has built-in support for concurrency, distribution and fault tolerance.
 
-_Note: This feature does not install the build tools or dependencies needed for successfully compiling your version of Erlang and the BEAM. You need to install them separately beforehand. Please refer to the [asdf-erlang](https://github.com/asdf-vm/asdf-erlang?tab=readme-ov-file#before-asdf-install) plugin page for the build dependencies needed for your desired version of Erlang._
-
 ## Example Usage
 
 ```json
 "features": {
-    "ghcr.io/rabdulwahhab/devcontainer-features/erlang-asdf:1": {
-        "version": "28.1",
-        "kerlConfigureOptions": "--disable-debug --without-javac"
-    }
+    "ghcr.io/rabdulwahhab/devcontainer-features/erlang-asdf:1": {}
 }
 ```
 
@@ -21,5 +16,10 @@ _Note: This feature does not install the build tools or dependencies needed for 
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
 | version | Select the version to install. | string | latest |
-| kerlConfigureOptions | kerl configure options used when building. | string | --disable-debug --without-javac |
+| kerlConfigureOptions | kerl configure options used when building. | string | - |
 
+
+
+---
+
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/rabdulwahhab/devcontainer-features/blob/main/src/erlang-asdf/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
