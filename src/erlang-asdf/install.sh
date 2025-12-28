@@ -61,7 +61,10 @@ install_via_asdf() {
 	# asdf may be installed somewhere on the machine, but we need it to be accessible to the remote user
 	# the code bellow will return 2 only when asdf is available, and 1 otherwise
 	set +e
-	su - "$_REMOTE_USER" <<EOF
+	su "$_REMOTE_USER" <<EOF
+		export HOME="$_REMOTE_USER_HOME"
+		export PATH="\$HOME/.asdf/bin:\$HOME/.asdf/shims:\$PATH"
+
 		if type asdf >/dev/null 2>&1; then
 			exit 2
 		fi
@@ -72,7 +75,9 @@ EOF
 
 	if [ "${exit_code}" -eq 2 ]; then
 		# asdf already available to remote user, use it
-		su - "$_REMOTE_USER" <<EOF
+		su "$_REMOTE_USER" <<EOF
+			export HOME="$_REMOTE_USER_HOME"
+			. "\$HOME/.asdf/asdf.sh"
 
 			if asdf list "$PLUGIN" >/dev/null 2>&1; then
 				echo "$PLUGIN already exists - skipping adding it"
@@ -81,35 +86,35 @@ EOF
 			fi
 
  			if [ "${VERSION}" = "latest" ] ; then
-				resolved_version=$(asdf latest "$PLUGIN" "$LATESTVERSIONPATTERN")
+				resolved_version=\$(asdf latest "$PLUGIN" "$LATESTVERSIONPATTERN")
 			else
 				resolved_version=$VERSION
 			fi
 
             export KERL_CONFIGURE_OPTIONS="$KERL_CONFIGURE_OPTIONS"
-			asdf install "$PLUGIN" "$resolved_version"
-			asdf global "$PLUGIN" "$resolved_version"
+			asdf install "$PLUGIN" "\$resolved_version"
+			asdf global "$PLUGIN" "\$resolved_version"
 EOF
 	else
 		# asdf is not available to remote user, install it, then update rc files
 
+		su "$_REMOTE_USER" <<EOF
+			export HOME="$_REMOTE_USER_HOME"
 
-		su - "$_REMOTE_USER" <<EOF
 			git clone --depth=1 \
 					-c core.eol=lf \
 					-c core.autocrlf=false \
 					-c fsck.zeroPaddedFilemode=ignore \
 					-c fetch.fsck.zeroPaddedFilemode=ignore \
 					-c receive.fsck.zeroPaddedFilemode=ignore \
-					"https://github.com/asdf-vm/asdf.git" --branch v0.12.0 $_REMOTE_USER_HOME/.asdf 2>&1
+					"https://github.com/asdf-vm/asdf.git" --branch v0.12.0 "\$HOME/.asdf" 2>&1
 
-			. $_REMOTE_USER_HOME/.asdf/asdf.sh
+			. "\$HOME/.asdf/asdf.sh"
 			if asdf list "$PLUGIN" >/dev/null 2>&1; then
 				echo "$PLUGIN already exists - skipping adding it"
 			else
 				asdf plugin add "$PLUGIN" "$REPO"
 			fi
-
 EOF
 
 
@@ -117,8 +122,9 @@ EOF
 		# a subshell take prevedent to su, so we must resolve variables
 		# pre using them in final su clause.
 		# I hate bash.
-		resolved_version=$(su - "$_REMOTE_USER" <<EOF
-			. $_REMOTE_USER_HOME/.asdf/asdf.sh > /dev/null 2>&1
+		resolved_version=$(su "$_REMOTE_USER" <<EOF
+			export HOME="$_REMOTE_USER_HOME"
+			. "\$HOME/.asdf/asdf.sh" > /dev/null 2>&1
 
 			if [ "${VERSION}" = "latest" ] ; then
 				asdf latest "$PLUGIN" "$LATESTVERSIONPATTERN"
@@ -127,12 +133,12 @@ EOF
 			fi
 EOF
 )
-		su - "$_REMOTE_USER" <<EOF
-			. $_REMOTE_USER_HOME/.asdf/asdf.sh
+		su "$_REMOTE_USER" <<EOF
+			export HOME="$_REMOTE_USER_HOME"
+			. "\$HOME/.asdf/asdf.sh"
             export KERL_CONFIGURE_OPTIONS="$KERL_CONFIGURE_OPTIONS"
 			asdf install "$PLUGIN" "$resolved_version"
 			asdf global "$PLUGIN" "$resolved_version"
-
 EOF
 		updaterc ". $_REMOTE_USER_HOME/.asdf/asdf.sh"
 	fi
