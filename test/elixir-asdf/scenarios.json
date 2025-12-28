@@ -12,11 +12,6 @@
             "elixir-asdf": {
                 "version": "v1.19.4-otp-28"
             }
-        },
-        "overrideFeatureInstallOrder": [
-            "ghcr.io/devcontainers-extra/features/apt-get-packages",
-            "erlang-asdf",
-            "elixir-asdf"
-        ]
+        }
     }
 }
