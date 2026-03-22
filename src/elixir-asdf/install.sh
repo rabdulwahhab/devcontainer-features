@@ -6,6 +6,10 @@ set -ex
 
 VERSION=${VERSION:-"latest"}
 
+if [ "${VERSION}" != "latest" ]; then
+	VERSION=${VERSION#v}
+fi
+
 # Clean up
 rm -rf /var/lib/apt/lists/*
 
